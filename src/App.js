@@ -1,11 +1,10 @@
-import './App.css';
-import './Components/Search/SearchDiv';
-import SearchDiv from './Components/Search/SearchDiv';
-import { useState } from 'react';
-import WeatherDiv from './Components/WeatherInfo/WeatherDiv';
+import "./App.css";
+import "./Components/Search/SearchDiv";
+import SearchDiv from "./Components/Search/SearchDiv";
+import { useState } from "react";
+import WeatherDiv from "./Components/WeatherInfo/WeatherDiv";
 
 function App() {
-
   const [responseData, setResponseData] = useState({});
 
   const [city, setCity] = useState("");
@@ -17,6 +16,7 @@ function App() {
       );
       let weatherData = await response.json();
       setResponseData(weatherData);
+      setCity(weatherData.name);
       console.log(weatherData);
     } catch (err) {
       console.log(err);
@@ -25,9 +25,12 @@ function App() {
 
   return (
     <div className="App">
-      <SearchDiv onGetData={getData} city={city} onSetCity={setCity}/>
-      {Object.keys(responseData).length !== 0 ? <WeatherDiv data={responseData} /> : <p></p>}
-      
+      <SearchDiv onGetData={getData} city={city} onSetCity={setCity} />
+      {Object.keys(responseData).length !== 0 ? (
+        <WeatherDiv data={responseData} />
+      ) : (
+        <p></p>
+      )}
     </div>
   );
 }

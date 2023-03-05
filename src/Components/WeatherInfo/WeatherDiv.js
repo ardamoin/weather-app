@@ -17,12 +17,37 @@ function WeatherDiv(props) {
    *
    */
 
+  const getLocalDay = (unixCode, utcOffset) => {
+    let localDate = new Date((unixCode + utcOffset + 18000) * 1000);
+
+    return localDate.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  const getLocalTime = (unixCode, utcOffset) => {
+    let localDate = new Date((unixCode + utcOffset + 18000) * 1000);
+
+    let localSeconds = localDate.getSeconds();
+    let localMinutes =
+      localSeconds === 0 ? localDate.getMinutes() : localDate.getMinutes() + 1;
+    let localHour = localDate.getHours();
+
+    return `${localHour}:${localMinutes.toString().padStart(2, "0")}`;
+  };
+
   let success = (
     <div>
       <WeatherLocation data={props.data} />
       <WeatherImg data={props.data} />
-      <WeatherOverview data={props.data} />
-      <WeatherDetails data={props.data} />
+      <WeatherOverview
+        data={props.data}
+        getLocalTime={getLocalTime}
+        getLocalDay={getLocalDay}
+      />
+      <WeatherDetails data={props.data} getLocalTime={getLocalTime} />
     </div>
   );
 

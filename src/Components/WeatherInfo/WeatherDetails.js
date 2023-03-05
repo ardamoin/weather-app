@@ -4,31 +4,35 @@ function WeatherDetails(props) {
       <div className="row">
         <dl>
           <dt>Sunrise</dt>
-          <dd>{props.data.sys.sunrise}</dd>
+          <dd>
+            {props.getLocalTime(props.data.sys.sunrise, props.data.timezone)}
+          </dd>
         </dl>
         <dl>
           <dt>Sunset</dt>
-          <dd>{props.data.sys.sunset}</dd>
+          <dd>
+            {props.getLocalTime(props.data.sys.sunset, props.data.timezone)}
+          </dd>
         </dl>
       </div>
       <div className="row">
         <dl>
           <dt>Wind Speed</dt>
-          <dd>{props.data.wind.speed}</dd>
+          <dd>{props.data.wind.speed}m/s</dd>
         </dl>
         <dl>
           <dt>Feels Like</dt>
-          <dd>{props.data.main.feels_like}</dd>
+          <dd>{Math.round(props.data.main.feels_like - 273.15)}°C</dd>
         </dl>
       </div>
       <div className="row">
         <dl>
           <dt>Humidity</dt>
-          <dd>{props.data.main.humidity}</dd>
+          <dd>{props.data.main.humidity}%</dd>
         </dl>
         <dl>
           <dt>Pressure</dt>
-          <dd>{props.data.main.pressure}</dd>
+          <dd>{props.data.main.pressure} hPa</dd>
         </dl>
       </div>
     </div>
