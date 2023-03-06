@@ -1,6 +1,8 @@
 # Weather App
 
 A weather app created using React.js
+[Live Demo](https://ardamoin.github.io/weather-app/) :point_left:
+
 
 ## Available Scripts
 
