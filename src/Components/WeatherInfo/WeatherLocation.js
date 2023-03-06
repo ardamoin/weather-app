@@ -1,3 +1,5 @@
+import styles from "./WeatherLocation.module.css";
+
 function WeatherLocation(props) {
   const getFlagEmoji = (countryCode) => {
     const codePoints = countryCode
@@ -8,8 +10,11 @@ function WeatherLocation(props) {
   };
 
   return (
-    <div>
-      {props.data.name}, {props.data.sys.country} {getFlagEmoji(props.data.sys.country)}
+    <div className={styles.location}>
+      {props.data.name}, {props.data.sys.country}{" "}
+      <span className={styles.flag}>
+        {getFlagEmoji(props.data.sys.country)}
+      </span>
     </div>
   );
 }

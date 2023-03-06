@@ -1,21 +1,25 @@
+import styles from './WeatherDetails.module.css';
+
 function WeatherDetails(props) {
   return (
     <div>
-      <div className="row">
+      <div className={`${styles.row} ${styles['row-underline']}`}>
         <dl>
+          <span className={styles.emoji}>☀️</span>
           <dt>Sunrise</dt>
           <dd>
             {props.getLocalTime(props.data.sys.sunrise, props.data.timezone)}
           </dd>
         </dl>
         <dl>
+          <span className={styles.emoji}>🌑</span>
           <dt>Sunset</dt>
           <dd>
             {props.getLocalTime(props.data.sys.sunset, props.data.timezone)}
           </dd>
         </dl>
       </div>
-      <div className="row">
+      <div className={`${styles.row} ${styles['row-underline']}`}>
         <dl>
           <dt>Wind Speed</dt>
           <dd>{props.data.wind.speed}m/s</dd>
@@ -25,7 +29,7 @@ function WeatherDetails(props) {
           <dd>{Math.round(props.data.main.feels_like - 273.15)}°C</dd>
         </dl>
       </div>
-      <div className="row">
+      <div className={styles.row}>
         <dl>
           <dt>Humidity</dt>
           <dd>{props.data.main.humidity}%</dd>

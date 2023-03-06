@@ -1,0 +1,11 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(100% 100% at 100% 0, #20cfff 0, #3950ff 100%);
+  margin-bottom: 5px;
+  border-radius: 15px;
+  min-width: 400px;
+}
+
+

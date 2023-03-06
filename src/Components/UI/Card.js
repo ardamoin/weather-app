@@ -1,8 +1,7 @@
-import SearchDiv from '../Search/SearchDiv';
+import styles from "./Card.module.css";
 
-function Card() {
-    return <div>
-    </div>
+function Card(props) {
+  return <div className={styles.card}>{props.children}</div>;
 }
 
 export default Card;

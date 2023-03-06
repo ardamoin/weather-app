@@ -1,0 +1,28 @@
+dl {
+  display: inline-block;
+}
+
+dt {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+dd {
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 100px;
+}
+
+.row-underline {
+    border-bottom: solid 1px gainsboro;
+}
+
+.emoji {
+    font-size: 36px;
+}

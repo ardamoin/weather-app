@@ -1,4 +1,4 @@
-import { useState } from "react";
+import style from "./WeatherOverview.module.css";
 
 function WeatherOverview(props) {
   const tempInCelsius = Math.round(props.data.main.temp - 273.15);
@@ -10,11 +10,11 @@ function WeatherOverview(props) {
     .join(" ");
 
   return (
-    <div>
-      <p>{`${tempInCelsius}°C`}</p>
-      <p>{mainDescription}</p>
-      <p>{capitalizedDetails}</p>
-      <p>
+    <div className={style.overview}>
+      <p className={style.temperature}>{`${tempInCelsius}°C`}</p>
+      <p className={style.description}>{mainDescription}</p>
+      <p className={style["detailed-description"]}>{capitalizedDetails}</p>
+      <p className={style.details}>
         {props.getLocalDay(props.data.dt, props.data.timezone)} ◆{" "}
         {props.getLocalTime(props.data.dt, props.data.timezone)}
       </p>

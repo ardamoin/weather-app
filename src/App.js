@@ -3,11 +3,11 @@ import "./Components/Search/SearchDiv";
 import SearchDiv from "./Components/Search/SearchDiv";
 import { useState } from "react";
 import WeatherDiv from "./Components/WeatherInfo/WeatherDiv";
+import Card from "./Components/UI/Card";
 
 function App() {
   const [responseData, setResponseData] = useState({});
-
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(" ");
 
   const getData = async () => {
     try {
@@ -25,9 +25,14 @@ function App() {
 
   return (
     <div className="App">
-      <SearchDiv onGetData={getData} city={city} onSetCity={setCity} />
+      <Card>
+        <SearchDiv onGetData={getData} city={city} onSetCity={setCity} />
+      </Card>
+
       {Object.keys(responseData).length !== 0 ? (
-        <WeatherDiv data={responseData} />
+        <Card>
+          <WeatherDiv data={responseData} />
+        </Card>
       ) : (
         <p></p>
       )}
