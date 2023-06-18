@@ -7,16 +7,16 @@ import Card from "./Components/UI/Card";
 
 function App() {
   const [responseData, setResponseData] = useState({});
-  const [city, setCity] = useState(" ");
+  const [city, setCity] = useState("");
 
   const getData = async () => {
     try {
       let response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city === "" ? " " : city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
       let weatherData = await response.json();
       setResponseData(weatherData);
-      setCity(weatherData.name);
+      weatherData.name ? setCity(weatherData.name) : setCity("");
       console.log(weatherData);
     } catch (err) {
       console.log(err);
